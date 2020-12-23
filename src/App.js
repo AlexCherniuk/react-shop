@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Filter from './components/Filter'
 import Products from './components/Products'
 import data from './data.json'
 export default class App extends Component {
@@ -7,11 +8,48 @@ export default class App extends Component {
 
     this.state = {
       products: data.products,
-      size: "",
+      filter: "",
       sort: ""
-    }
+    };
   }
+  category
+  /* фильтруем продукты по типу - Сало , Мясо, Колбаса  -  */
+  filterProducts = (event) => {
+    if (event.target.value === "") {
+      this.setState({
+        products: data.products,
+        filter: event.target.value
+      })
+    } else {
+      this.setState({
+        filter: event.target.value,
+        products: data.products.filter(product => product.category.indexOf(event.target.value) >= 0)
+      })
+    };
 
+  }
+  /* coртируем продукты -  */
+ 
+  sortProducts = (event) => {
+    const sort = event.target.value;
+    this.setState((state) => ({
+      sort: sort,
+      products: this.state.products.slice().sort((a, b) =>
+        sort === "low_price"
+          ? a.price > b.price
+            ? 1
+            : -1
+          : sort === "hight_price"
+            ? a.price < b.price
+              ? 1
+              : -1
+            : a._id > b._id
+              ? 1
+              : -1
+      ),
+    }))
+
+  }
 
   render() {
     return (
@@ -22,7 +60,13 @@ export default class App extends Component {
         <main>
           <div className="content">
             <div className="main">
-            <Products products={this.state.products}/>
+              <Filter
+                count={this.state.products.length}
+                filter={this.state.filter}
+                sort={this.state.sort}
+                filterProducts={this.filterProducts}
+                sortProducts={this.sortProducts} />
+              <Products products={this.state.products} />
             </div>
             <div className="sidebar">Cart Items</div>
           </div>
