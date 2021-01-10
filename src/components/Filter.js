@@ -14,7 +14,7 @@ export default class Filter extends Component {
                         <option value="low_price">Спочатку дешевші</option>
                         <option value="hight_price">Спочатку дорожчі</option>
                     </select>
-                </div>
+                </div> 
                 <div className="filter-category">Фільтр  {" "}
                 <select value={this.props.filter} onChange={this.props.filterProducts}>
                         <option value="">Усі</option>
@@ -25,6 +25,6 @@ export default class Filter extends Component {
                 </div>
             </div>
         )
-    }
+    } 
 }
  

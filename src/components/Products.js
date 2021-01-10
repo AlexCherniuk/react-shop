@@ -16,7 +16,7 @@ export default class Products extends Component {
                                 </a> 
                                 <div className="product-price" >
                                     <div>{formatCurrency(product.price)}</div>
-                                    <button className="button primary">В корзину</button>
+                                    <button className="button primary" onClick={()=> this.props.addToCart(product)}>В кошик</button>
                                 </div>
                             </div>
                         </li>
@@ -24,5 +24,5 @@ export default class Products extends Component {
                 </ul>            
             </div>
         )
-    }
+    } 
 }
