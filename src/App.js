@@ -9,19 +9,23 @@ export default class App extends Component {
 
     this.state = {
       products: data.products,
-      cartItems: [],
+      cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [], 
       filter: "",
       sort: ""
     };
   }
-
+  createOrder = (order) => {
+    alert("test " + order.name)
+  }
   removeFromCart = (product) => {
     const cartItems = this.state.cartItems.slice();
     this.setState({
       cartItems: cartItems.filter((x) => x._id !== product._id)
-    });
-  }
+    })
+    localStorage.setItem("cartItems", JSON.stringify(cartItems.filter((x) => x._id !== product._id)))
 
+  }
+ 
   addToCart = (product, callback) => {
     const cartItems = this.state.cartItems.slice();
     let alreadyInCart = false;
@@ -36,6 +40,7 @@ export default class App extends Component {
       cartItems.push({ ...product, count: 1 })
     }
     this.setState({cartItems});
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
   };
   /* фильтруем продукты по типу - Сало , Мясо, Колбаса  -  */
   filterProducts = (event) => {
@@ -96,7 +101,8 @@ export default class App extends Component {
             </div>
             <div className="sidebar">
               <Cart cartItems={this.state.cartItems}
-              removeFromCart={this.removeFromCart} />
+              removeFromCart={this.removeFromCart}
+              createOrder={this.createOrder} />
             </div>
           </div>
         </main>
