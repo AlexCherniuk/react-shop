@@ -15,9 +15,9 @@ export default class Products extends Component {
     openModal = (product) => {
         this.setState({ product });
     }
-    closeModal = (product) => {
+    closeModal = () => {
         this.setState({ product: null });
-    }
+    } 
 
     render() {
         const { product } = this.state;
@@ -52,7 +52,7 @@ export default class Products extends Component {
                                     <p><strong>{product.title}</strong></p>
                                     <p><strong>{product.description}</strong></p>
                                     <div className="product-price">
-                                        <div>{ }</div>
+                                        <div>{formatCurrency(product.price)}</div>
                                         <button className="button primary" onClick={() => {
                                             this.props.addToCart(product);
                                             this.closeModal();
@@ -65,7 +65,6 @@ export default class Products extends Component {
                         </Zoom>
                     </Modal>}
             </div>
-
         )
     }
 }
