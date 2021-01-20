@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Filter extends Component {
-    render() {
+export default function Filter (props) {
         return (
             <div className="filter">
-                <div className="filter-resoult">В наявності  {this.props.count}  товарів</div>
+                <div className="filter-resoult">В наявності  {props.count}  товарів</div>
                 <div className="filter-sort">
                     {" "}
                     Сортувати
                     {" "} 
-                    <select value={this.props.sort} onChange={this.props.sortProducts}>
+                    <select value={props.sort} onChange={props.sortProducts}>
                         <option value="latest">Популярні  </option>
                         <option value="low_price">Спочатку дешевші</option>
                         <option value="hight_price">Спочатку дорожчі</option>
                     </select>
                 </div> 
                 <div className="filter-category">Фільтр  {" "}
-                <select value={this.props.filter} onChange={this.props.filterProducts}>
+                <select value={props.filter} onChange={props.filterProducts}>
                         <option value="">Усі</option>
                         <option value="M">М'ясні вироби</option>
                         <option value="S">Сало</option>
@@ -25,6 +24,4 @@ export default class Filter extends Component {
                 </div>
             </div>
         )
-    } 
-}
- 
+    }
