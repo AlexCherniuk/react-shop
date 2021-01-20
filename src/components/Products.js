@@ -15,7 +15,7 @@ export default class Products extends Component {
     }
     closeModal = () => {
         this.setState({ product: null });
-    }
+    } 
 
     render() {
         const { product } = this.state;
@@ -63,7 +63,6 @@ export default class Products extends Component {
                         </Zoom>
                     </Modal> )}
             </div>
-
         )
     }
 }
