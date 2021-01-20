@@ -6,10 +6,8 @@ import Zoom from "react-reveal/Zoom"
 export default class Products extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             product: null,
-
         }
     }
     openModal = (product) => {
@@ -41,7 +39,7 @@ export default class Products extends Component {
                         </Fade>
                     ))}
                 </ul>
-                {product &&
+                {product && (
                     <Modal isOpen={true} onRequestClose={this.closeModal}>
                         <Zoom>
                             <button className="close-modal" onClick={this.closeModal}> x
@@ -50,7 +48,7 @@ export default class Products extends Component {
                                 <img src={product.image} alt={product.title}></img>
                                 <div className="product-details-description">
                                     <p><strong>{product.title}</strong></p>
-                                    <p><strong>{product.description}</strong></p>
+                                    <p>{product.description}</p>
                                     <div className="product-price">
                                         <div>{formatCurrency(product.price)}</div>
                                         <button className="button primary" onClick={() => {
@@ -63,7 +61,7 @@ export default class Products extends Component {
                                 </div>
                             </div>
                         </Zoom>
-                    </Modal>}
+                    </Modal> )}
             </div>
         )
     }
