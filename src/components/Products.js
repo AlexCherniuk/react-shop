@@ -9,15 +9,15 @@ export default function Products(props) {
     
     let [product, setProduct] = useState(null);
     
-    const openModal = (product) => {
-        setProduct({product});
+    let openModal = (product) => {
+        setProduct(()=> product);
     }
 
     const closeModal = () => {
-        setProduct({product: null});
+        setProduct(null);
     }
 
-    // const { product } = product
+    // const { product } = product;
     return (
         
         <div>
