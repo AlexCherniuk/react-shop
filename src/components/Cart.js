@@ -5,8 +5,8 @@ import Fade from 'react-reveal/Fade';
 export default function Cart(props) {
 
     let [name, setChangeName] = useState("");
-    let [email, setChangeEmail] = useState("");
-    let [address, setChangeAddress] = useState("");
+    let email = useState("");
+    let address = useState("");
     let [showCheckout, setChangeShowCheckout] = useState(false);
 
     const createOrder = (e) => {
