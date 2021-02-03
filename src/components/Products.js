@@ -5,12 +5,13 @@ import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom"
 
 
-export default function Products(props) {
-    
+export default function Products(props) { // краще писати function Products, а в кінці файла вже експорти робити
+    // тут краще задати {}, так як продукт в тебе об'єкт, або нічого не писати.
+    // краще назвати змінну selectedProduct
     let [product, setProduct] = useState(null);
-    
-    let openModal = (product) => {
-        setProduct(()=> product);
+
+    let openModal = (product) => { // нащо тут let?
+        setProduct(()=> product); // це не вірно. Почитай ще.
     }
 
     const closeModal = () => {
@@ -19,16 +20,16 @@ export default function Products(props) {
 
     // const { product } = product;
     return (
-        
+
         <div>
             <ul className="products">
                 {props.products.map(product => (
                     <Fade cascade>
-                        <li key="product._id">
+                        <li key="product._id"> {/* оце не спрацює, в тебе однаковий ключ на кожному елементі */}
                             <div className="product">
-                                <a href={"#" + product._id} onClick={() => openModal(product)}>
-                                    <img src={product.image} alt={product.title}></img>
-                                    <p>{product.title}</p>
+                                <a href={"#" + product._id} onClick={() => openModal(product)}> {/* href можна тут не вказувати, ти його не використовуєш */}
+                                    <img src={product.image} alt={product.title} />
+                                    <p>{product.title}</p> {/* використовуй правильні теги html, тут має бути тег заголовку */}
                                 </a>
                                 <div className="product-price" >
                                     <div>{formatCurrency(product.price)}</div>
@@ -39,13 +40,13 @@ export default function Products(props) {
                     </Fade>
                 ))}
             </ul>
-            {product && (
-                <Modal isOpen={true} onRequestClose={closeModal}>
-                    <Zoom>
+            {product && ( // це не вірно, ти маєш передати це в isOpen нижче, а не ховати всю модалку.
+                <Modal isOpen={true} onRequestClose={closeModal}> {/* цю модалку винеси в окремий компонент */ }
+                    <Zoom> {/* краще амімашку вчіпити на появу модалки, а не на її контент, у тебе layout shifting великий через це буде */}
                         <button className="close-modal" onClick={closeModal}> x
                         </button>
                         <div className="product-details">
-                            <img src={product.image} alt={product.title}></img>
+                            <img src={product.image} alt={product.title} />
                             <div className="product-details-description">
                                 <p><strong>{product.title}</strong></p>
                                 <p>{product.description}</p>
@@ -81,7 +82,7 @@ export default function Products(props) {
 //     }
 //     closeModal = () => {
 //         this.setState({ product: null });
-//     } 
+//     }
 
 //     render() {
 
