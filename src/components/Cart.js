@@ -4,17 +4,10 @@ import Fade from 'react-reveal/Fade';
 
 export default function Cart(props) {
 
-<<<<<<< HEAD
-    let [name, setChangeName] = useState("");
-    let [email] = useState("");// поменять на другой метод 
-    let address = useState("");// поменять на другой метод 
-    let [showCheckout, setChangeShowCheckout] = useState(false);
-=======
   let [name, setChangeName] = useState('');
   let email = useState(''); // TODO
   let address = useState(''); // TODO
   let [showCheckout, setChangeShowCheckout] = useState(false);
->>>>>>> 9eeb823d06e20f6b406165a18c788cdb7c69b956
 
   const createOrder = (e) => {
     e.preventDefault();
@@ -24,39 +17,6 @@ export default function Cart(props) {
       address: address,
       cartItems: props.cartItems
     };
-<<<<<<< HEAD
-
-    const markupCart = () => {
-        <div className="cart cart-header">
-            {cartItems === 0 ? `Кошик порожный` : `В кошику ${cartItems.length} товарів`}
-        </div>
-    }
-    
-    return (
-        <div>
-            {markupCart()}
-            <div className="cart">
-                <Fade left cascade>
-                    <ul className="cart-items">
-                        {cartItems.map(item => (
-                            <li key={item._id}>
-                                <div>
-                                    <img src={item.image} alt={item.title}></img>
-                                </div>
-                                <div>
-                                    <div>{item.title}</div>
-                                    <div className="right">
-                                        {formatCurrency(item.price)} x {item.count}{" "}
-                                        <button className="button" onClick={() => props.removeFromCart(item)}>Видалити</button>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </Fade>
-            </div>
-            {cartItems.length !== 0 && (
-=======
     props.createOrder(order);
   };
   const handleInput = (e) => {
@@ -79,7 +39,6 @@ export default function Cart(props) {
                 <div>
                   <img src={item.image} alt={item.title} />
                 </div>
->>>>>>> 9eeb823d06e20f6b406165a18c788cdb7c69b956
                 <div>
                   <div>{item.title}</div>
                   <div className="right">
