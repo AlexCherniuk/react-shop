@@ -113,19 +113,19 @@ export default function Cart(props) {
                     <li>
                       <label>Email</label>
                       <input type="email" name="email"
-                             required onChange={handleInput}>
+                        required onChange={handleInput}>
                       </input>
                     </li>
                     <li>
                       <label>Name</label>
                       <input type="text" name="name"
-                             required onChange={handleInput}>
+                        required onChange={handleInput}>
                       </input>
                     </li>
                     <li>
                       <label>Address</label>
                       <input type="text" name="address"
-                             required onChange={handleInput}>
+                        required onChange={handleInput}>
                       </input>
                     </li>
                     <li>
