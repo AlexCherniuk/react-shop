@@ -30,7 +30,7 @@ export default class App extends Component {
     const cartItems = this.state.cartItems.slice();
     let alreadyInCart = false;
 
-    cartItems.forEach((item) => { /* перебираем каждый обьеки */
+    cartItems.forEach((item) => { /* перебираем every object*/
       if (item._id === product._id) {
         item.count++;
         alreadyInCart = true;
