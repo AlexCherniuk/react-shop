@@ -110,7 +110,6 @@ export default class App extends Component {
           All right is reserved.
       </footer>
       </div>
-
     )
   }
 }

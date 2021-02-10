@@ -5,8 +5,8 @@ import Fade from 'react-reveal/Fade';
 export default function Cart(props) {
 
     let [name, setChangeName] = useState("");
-    let email = useState("");
-    let address = useState("");
+    let [email] = useState("");// поменять на другой метод 
+    let address = useState("");// поменять на другой метод 
     let [showCheckout, setChangeShowCheckout] = useState(false);
 
     const createOrder = (e) => {
@@ -27,13 +27,16 @@ export default function Cart(props) {
     const changeShowCheckout = () => {
         setChangeShowCheckout(true)
     };
+
+    const markupCart = () => {
+        <div className="cart cart-header">
+            {cartItems === 0 ? `Кошик порожный` : `В кошику ${cartItems.length} товарів`}
+        </div>
+    }
     
     return (
         <div>
-            {cartItems === 0 ? (<div className="cart cart-header">Кошик порожній</div>)
-                : (<div className="cart cart-header">В кошику {cartItems.length} товарів{" "}
-                </div>
-                )}
+            {markupCart()}
             <div className="cart">
                 <Fade left cascade>
                     <ul className="cart-items">

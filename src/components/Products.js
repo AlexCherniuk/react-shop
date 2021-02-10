@@ -4,12 +4,11 @@ import Fade from "react-reveal/Fade";
 import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom"
 
-
-export default function Products(props) {
+function Products(props) {
     
     let [product, setProduct] = useState(null);
     
-    let openModal = (product) => {
+    const openModal = (product) => {
         setProduct(()=> product);
     }
 
@@ -42,8 +41,7 @@ export default function Products(props) {
             {product && (
                 <Modal isOpen={true} onRequestClose={closeModal}>
                     <Zoom>
-                        <button className="close-modal" onClick={closeModal}> x
-                        </button>
+                    <button type="button" class="btn-close" aria-label="Close" onClick={closeModal}>x</button>
                         <div className="product-details">
                             <img src={product.image} alt={product.title}></img>
                             <div className="product-details-description">
@@ -85,3 +83,4 @@ export default function Products(props) {
 
 //     render() {
 
+    export default Products;
